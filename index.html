@@ -591,7 +591,25 @@
     <!-- Mobile Menu Toggle & Countdown Script -->
     <script>
         document.getElementById('menu-toggle').addEventListener('click', function () {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+            } else {
+                mobileMenu.style.maxHeight = '0';
+            }
+        });
+
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.remove('active');
+            mobileMenu.style.maxHeight = '0';
+        }
+
+        // Add click event listeners to all mobile menu links
+        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
         });
 
         // Countdown Timer

@@ -2,150 +2,279 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <title>Redeem Discount</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Include the html5-qrcode library from CDN -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- html5-qrcode library -->
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <style>
+    :root {
+      --primary-light: #FFC300;
+      --primary-dark: #FF5733;
+      --success-bg: rgba(76, 175, 80, 0.2);
+      --success-border: #4CAF50;
+      --error-bg: rgba(244, 67, 54, 0.2);
+      --error-border: #F44336;
+      --bg-color: #000;
+      --text-color: #fff;
+      --input-focus-shadow: rgba(255, 87, 51, 0.5);
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 20px;
+      background: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 500px;
+      background: var(--bg-color);
+      padding: 30px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.instructions {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #e0e0e0;
     }
     #reader {
-      width: 80%;
-      max-width: 400px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
     }
     #result {
-      margin-top: 20px;
-      font-size: 18px;
-      padding: 10px;
+      font-size: 1.1rem;
+      padding: 15px;
+      margin: 15px 0;
       border-radius: 5px;
+      transition: all 0.3s ease;
     }
-    /* Success styling */
     #result.success {
-      color: white;
-      background: #1F2937;
-      border: 1px solid #4ADE80;
-      padding: 15px;
-      box-shadow: 0 4px 6px rgba(74, 222, 128, 0.1);
-      transition: all 0.3s ease;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
     }
-    /* Error styling */
     #result.error {
-      color: white;
-      background: #1F2937;
-      border: 1px solid #FF5733;
-      padding: 15px;
-      box-shadow: 0 4px 6px rgba(255, 87, 51, 0.1);
-      transition: all 0.3s ease;
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
     }
-    button {
+    button, .manual-btn {
       padding: 12px 24px;
-      font-size: 16px;
-      margin: 20px auto;
+      font-size: 1rem;
+      margin: 15px auto;
       cursor: pointer;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(to right, #FF5733, #FFC300);
-      color: white;
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+      color: var(--text-color);
       display: block;
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       font-weight: bold;
       text-transform: uppercase;
     }
-    button:hover {
+    button:hover, .manual-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255, 87, 51, 0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       background: linear-gradient(to right, #FF4518, #FFB700);
+    }
+    /* Manual Input Styling */
+    #manualInput {
+      margin-top: 20px;
+    }
+    #discountCodeInput {
+      width: calc(100% - 24px);
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    #discountCodeInput:focus {
+      box-shadow: 0 0 5px var(--input-focus-shadow);
+    }
+    /* Loading overlay styling */
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+    }
+    #loadingOverlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 20px auto;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+      p.instructions, #result {
+        font-size: 0.95rem;
+      }
+      button, .manual-btn, #discountCodeInput {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1 class="text-4xl font-bold mb-4" style="background: linear-gradient(to right, #FF5733, #FFC300); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Redeem Discount</h1>
-  <p class="text-gray-300 mb-8">Scan the QR code to redeem the exclusive discount.</p>
-  <div id="reader"></div>
-  <div id="result"></div>
-  <!-- Initially hidden -->
-  <button id="goBack" style="display: none;">Scan Another QR Code</button>
+  <div id="loadingOverlay" aria-live="assertive">Loading...</div>
+  <div class="container">
+    <h1>Redeem Discount</h1>
+    <p class="instructions">Scan the QR code or enter your discount code below to claim your exclusive offer.</p>
+    
+    <!-- QR Scanner Section -->
+    <div id="reader" aria-label="QR code scanner"></div>
+    
+    <!-- Result Message -->
+    <div id="result" role="alert"></div>
+    
+    <!-- Button to restart scanning -->
+    <button id="goBack" style="display: none;">Scan Another QR Code</button>
+    
+    <!-- Manual Discount Code Input -->
+    <div id="manualInput">
+      <input type="text" id="discountCodeInput" placeholder="Enter discount code" aria-label="Discount Code">
+      <button class="manual-btn" id="manualRedeemBtn">Redeem Code</button>
+    </div>
+  </div>
   
   <script>
     let html5QrcodeScanner; // Global reference for the scanner
+    const loadingOverlay = document.getElementById('loadingOverlay');
 
-    // Callback when a QR code is successfully scanned
+    // Function to show/hide loading overlay with a smooth transition.
+    function setLoading(isLoading) {
+      if(isLoading){
+        loadingOverlay.classList.add('active');
+      } else {
+        loadingOverlay.classList.remove('active');
+      }
+    }
+
+    // Callback when a QR code is successfully scanned.
     function onScanSuccess(decodedText, decodedResult) {
-      // Stop scanning once a code is detected.
+      setLoading(true);
       html5QrcodeScanner.clear().then(() => {
         try {
-          // Assume the QR code contains a URL like: http://localhost:8000/view/XYZ123
-          // Extract the token (the last part of the URL)
+          // Assume the QR code contains a URL like: http://example.com/view/XYZ123
           const url = new URL(decodedText);
           const parts = url.pathname.split('/');
           const token = parts[parts.length - 1];
-          
-          // Call the redemption endpoint with an explicit Accept header for JSON.
-          fetch(`https://blazin-vibe-backend-production.up.railway.app/redeem/${token}`, {
-            method: 'POST',
-            headers: { "Accept": "application/json" }
-          })
-          .then(response => response.json())
-          .then(data => {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerText = data.message;
-            // Apply color styling: green for success, red for already redeemed/error.
-            if (data.message.toLowerCase().includes("redeemed successfully")) {
-              resultDiv.className = "success";
-            } else {
-              resultDiv.className = "error";
-            }
-            // Show the "Scan Another QR Code" button after the scan.
-            document.getElementById('goBack').style.display = 'block';
-          })
-          .catch(err => {
-            console.error(err);
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerText = "Error redeeming discount.";
-            resultDiv.className = "error";
-            document.getElementById('goBack').style.display = 'block';
-          });
+          redeemDiscount(token);
         } catch (err) {
           console.error("Invalid QR content", err);
-          const resultDiv = document.getElementById('result');
-          resultDiv.innerText = "Scanned QR is invalid.";
-          resultDiv.className = "error";
+          displayResult("Scanned QR is invalid.", "error");
           document.getElementById('goBack').style.display = 'block';
+          setLoading(false);
         }
       }).catch(err => {
         console.error("Failed to clear scanner", err);
+        setLoading(false);
       });
     }
 
-    // Function to initialize the scanner
+    // Function to initialize the scanner.
     function initializeScanner() {
-      // Hide the "Scan Another QR Code" button while scanning.
       document.getElementById('goBack').style.display = 'none';
-      // Clear any previous result message and classes.
-      const resultDiv = document.getElementById('result');
-      resultDiv.innerText = "";
-      resultDiv.className = "";
-      // Create a new instance of the scanner and render it into the "reader" element.
+      clearResult();
+      setLoading(false);
       html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 }, false);
       html5QrcodeScanner.render(onScanSuccess);
     }
 
+    // Function to display the result message with appropriate styling.
+    function displayResult(message, type) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerText = message;
+      resultDiv.className = type;
+    }
+
+    // Function to clear the result message.
+    function clearResult() {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerText = "";
+      resultDiv.className = "";
+    }
+
+    // Function to call the redeem endpoint.
+    function redeemDiscount(token) {
+      fetch(`https://blazin-vibe-backend-production.up.railway.app/redeem/${token}`, {
+        method: 'POST',
+        headers: { "Accept": "application/json" }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message.toLowerCase().includes("redeemed successfully")) {
+          displayResult(data.message, "success");
+        } else {
+          displayResult(data.message, "error");
+        }
+        document.getElementById('goBack').style.display = 'block';
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        displayResult("Error redeeming discount.", "error");
+        document.getElementById('goBack').style.display = 'block';
+        setLoading(false);
+      });
+    }
+
+    // Manual redeem handler.
+    document.getElementById('manualRedeemBtn').addEventListener('click', function() {
+      const token = document.getElementById('discountCodeInput').value.trim();
+      if (!token) {
+        displayResult("Please enter a discount code.", "error");
+        return;
+      }
+      clearResult();
+      setLoading(true);
+      redeemDiscount(token);
+    });
+
     // Initialize scanner on page load.
     initializeScanner();
 
-    // "Scan Another QR Code" button reinitializes the scanner for another scan.
+    // "Scan Another QR Code" button reinitializes the scanner.
     document.getElementById('goBack').addEventListener('click', function() {
       initializeScanner();
     });
