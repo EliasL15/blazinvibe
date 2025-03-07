@@ -93,7 +93,7 @@
           const token = parts[parts.length - 1];
           
           // Call the redemption endpoint with an explicit Accept header for JSON.
-          fetch(`http://localhost:8000/redeem/${token}`, {
+          fetch(`https://blazin-vibe-backend-production.up.railway.app/redeem/${token}`, {
             method: 'POST',
             headers: { "Accept": "application/json" }
           })
