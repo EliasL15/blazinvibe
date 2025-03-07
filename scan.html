@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Redeem Discount</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include the html5-qrcode library from CDN -->
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    #reader {
+      width: 80%;
+      max-width: 400px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    /* Success styling */
+    #result.success {
+      color: white;
+      background: #1F2937;
+      border: 1px solid #4ADE80;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(74, 222, 128, 0.1);
+      transition: all 0.3s ease;
+    }
+    /* Error styling */
+    #result.error {
+      color: white;
+      background: #1F2937;
+      border: 1px solid #FF5733;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(255, 87, 51, 0.1);
+      transition: all 0.3s ease;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin: 20px auto;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #FF5733, #FFC300);
+      color: white;
+      display: block;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 87, 51, 0.3);
+      background: linear-gradient(to right, #FF4518, #FFB700);
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text-4xl font-bold mb-4" style="background: linear-gradient(to right, #FF5733, #FFC300); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Redeem Discount</h1>
+  <p class="text-gray-300 mb-8">Scan the QR code to redeem the exclusive discount.</p>
+  <div id="reader"></div>
+  <div id="result"></div>
+  <!-- Initially hidden -->
+  <button id="goBack" style="display: none;">Scan Another QR Code</button>
+  
+  <script>
+    let html5QrcodeScanner; // Global reference for the scanner
+
+    // Callback when a QR code is successfully scanned
+    function onScanSuccess(decodedText, decodedResult) {
+      // Stop scanning once a code is detected.
+      html5QrcodeScanner.clear().then(() => {
+        try {
+          // Assume the QR code contains a URL like: http://localhost:8000/view/XYZ123
+          // Extract the token (the last part of the URL)
+          const url = new URL(decodedText);
+          const parts = url.pathname.split('/');
+          const token = parts[parts.length - 1];
+          
+          // Call the redemption endpoint with an explicit Accept header for JSON.
+          fetch(`http://localhost:8000/redeem/${token}`, {
+            method: 'POST',
+            headers: { "Accept": "application/json" }
+          })
+          .then(response => response.json())
+          .then(data => {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = data.message;
+            // Apply color styling: green for success, red for already redeemed/error.
+            if (data.message.toLowerCase().includes("redeemed successfully")) {
+              resultDiv.className = "success";
+            } else {
+              resultDiv.className = "error";
+            }
+            // Show the "Scan Another QR Code" button after the scan.
+            document.getElementById('goBack').style.display = 'block';
+          })
+          .catch(err => {
+            console.error(err);
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = "Error redeeming discount.";
+            resultDiv.className = "error";
+            document.getElementById('goBack').style.display = 'block';
+          });
+        } catch (err) {
+          console.error("Invalid QR content", err);
+          const resultDiv = document.getElementById('result');
+          resultDiv.innerText = "Scanned QR is invalid.";
+          resultDiv.className = "error";
+          document.getElementById('goBack').style.display = 'block';
+        }
+      }).catch(err => {
+        console.error("Failed to clear scanner", err);
+      });
+    }
+
+    // Function to initialize the scanner
+    function initializeScanner() {
+      // Hide the "Scan Another QR Code" button while scanning.
+      document.getElementById('goBack').style.display = 'none';
+      // Clear any previous result message and classes.
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerText = "";
+      resultDiv.className = "";
+      // Create a new instance of the scanner and render it into the "reader" element.
+      html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 }, false);
+      html5QrcodeScanner.render(onScanSuccess);
+    }
+
+    // Initialize scanner on page load.
+    initializeScanner();
+
+    // "Scan Another QR Code" button reinitializes the scanner for another scan.
+    document.getElementById('goBack').addEventListener('click', function() {
+      initializeScanner();
+    });
+  </script>
+</body>
+</html>
