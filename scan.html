@@ -183,7 +183,7 @@
 
     // Function to show/hide loading overlay with a smooth transition.
     function setLoading(isLoading) {
-      if(isLoading){
+      if (isLoading) {
         loadingOverlay.classList.add('active');
       } else {
         loadingOverlay.classList.remove('active');
@@ -217,8 +217,25 @@
       document.getElementById('goBack').style.display = 'none';
       clearResult();
       setLoading(false);
-      html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 }, false);
-      html5QrcodeScanner.render(onScanSuccess);
+
+      // Get available cameras and select the back camera if available.
+      Html5Qrcode.getCameras().then(cameras => {
+        const backCamera = cameras.find(camera =>
+          camera.label.toLowerCase().includes('back') ||
+          camera.label.toLowerCase().includes('environment')
+        );
+        const cameraId = backCamera ? backCamera.id : cameras[0].id; // fallback to first camera if back camera isn't found
+
+        html5QrcodeScanner = new Html5QrcodeScanner(
+          "reader",
+          { fps: 10, qrbox: 250, deviceId: { exact: cameraId } },
+          false
+        );
+        html5QrcodeScanner.render(onScanSuccess);
+      }).catch(err => {
+        console.error("Error getting cameras:", err);
+        displayResult("Error accessing camera.", "error");
+      });
     }
 
     // Function to display the result message with appropriate styling.
