@@ -178,64 +178,16 @@
   </div>
   
   <script>
-    let html5QrcodeScanner; // Global reference for the scanner
+    let html5QrCode; // Global reference for the lower-level scanner
     const loadingOverlay = document.getElementById('loadingOverlay');
 
-    // Function to show/hide loading overlay with a smooth transition.
+    // Function to show/hide loading overlay.
     function setLoading(isLoading) {
       if (isLoading) {
         loadingOverlay.classList.add('active');
       } else {
         loadingOverlay.classList.remove('active');
       }
-    }
-
-    // Callback when a QR code is successfully scanned.
-    function onScanSuccess(decodedText, decodedResult) {
-      setLoading(true);
-      html5QrcodeScanner.clear().then(() => {
-        try {
-          // Assume the QR code contains a URL like: http://example.com/view/XYZ123
-          const url = new URL(decodedText);
-          const parts = url.pathname.split('/');
-          const token = parts[parts.length - 1];
-          redeemDiscount(token);
-        } catch (err) {
-          console.error("Invalid QR content", err);
-          displayResult("Scanned QR is invalid.", "error");
-          document.getElementById('goBack').style.display = 'block';
-          setLoading(false);
-        }
-      }).catch(err => {
-        console.error("Failed to clear scanner", err);
-        setLoading(false);
-      });
-    }
-
-    // Function to initialize the scanner.
-    function initializeScanner() {
-      document.getElementById('goBack').style.display = 'none';
-      clearResult();
-      setLoading(false);
-
-      // Get available cameras and select the back camera if available.
-      Html5Qrcode.getCameras().then(cameras => {
-        const backCamera = cameras.find(camera =>
-          camera.label.toLowerCase().includes('back') ||
-          camera.label.toLowerCase().includes('environment')
-        );
-        const cameraId = backCamera ? backCamera.id : cameras[0].id; // fallback to first camera if back camera isn't found
-
-        html5QrcodeScanner = new Html5QrcodeScanner(
-          "reader",
-          { fps: 10, qrbox: 250, deviceId: { exact: cameraId } },
-          false
-        );
-        html5QrcodeScanner.render(onScanSuccess);
-      }).catch(err => {
-        console.error("Error getting cameras:", err);
-        displayResult("Error accessing camera.", "error");
-      });
     }
 
     // Function to display the result message with appropriate styling.
@@ -250,6 +202,28 @@
       const resultDiv = document.getElementById('result');
       resultDiv.innerText = "";
       resultDiv.className = "";
+    }
+
+    // Callback when a QR code is successfully scanned.
+    function onScanSuccess(decodedText, decodedResult) {
+      setLoading(true);
+      html5QrCode.stop().then(() => {
+        try {
+          // Assume the QR code contains a URL like: http://example.com/view/XYZ123
+          const url = new URL(decodedText);
+          const parts = url.pathname.split('/');
+          const token = parts[parts.length - 1];
+          redeemDiscount(token);
+        } catch (err) {
+          console.error("Invalid QR content", err);
+          displayResult("Scanned QR is invalid.", "error");
+          document.getElementById('goBack').style.display = 'block';
+          setLoading(false);
+        }
+      }).catch(err => {
+        console.error("Failed to stop scanning", err);
+        setLoading(false);
+      });
     }
 
     // Function to call the redeem endpoint.
@@ -273,6 +247,36 @@
         displayResult("Error redeeming discount.", "error");
         document.getElementById('goBack').style.display = 'block';
         setLoading(false);
+      });
+    }
+
+    // Function to initialize the scanner.
+    function initializeScanner() {
+      document.getElementById('goBack').style.display = 'none';
+      clearResult();
+      setLoading(false);
+
+      // Get available cameras and select the back camera if available.
+      Html5Qrcode.getCameras().then(cameras => {
+        const backCamera = cameras.find(camera =>
+          camera.label.toLowerCase().includes('back') ||
+          camera.label.toLowerCase().includes('environment')
+        );
+        const cameraId = backCamera ? backCamera.id : cameras[0].id; // Fallback to the first camera.
+
+        // Create a new instance of Html5Qrcode and start scanning.
+        html5QrCode = new Html5Qrcode("reader");
+        html5QrCode.start(
+          cameraId,
+          { fps: 10, qrbox: 250 },
+          onScanSuccess
+        ).catch(err => {
+          console.error("Unable to start scanning.", err);
+          displayResult("Error accessing camera.", "error");
+        });
+      }).catch(err => {
+        console.error("Error getting cameras:", err);
+        displayResult("Error accessing camera.", "error");
       });
     }
 
