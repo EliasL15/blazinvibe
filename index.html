@@ -2,685 +2,658 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blazin Vibe - Cyprus Event</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <script async src="https://www.instagram.com/embed.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blazin Vibe - Cyprus Event</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            overscroll-behavior: none;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      overscroll-behavior: none;
+    }
 
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/image.png') center/cover no-repeat;
-            height: 100vh;
-            min-height: 500px;
-        }
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/image.png') left/cover no-repeat;
+      height: 100vh;
+      min-height: 500px;
+    }
 
-        .countdown-item {
-            background: rgba(255, 87, 51, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
+    .countdown-item {
+      background: rgba(255, 87, 51, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
 
-        .nav-link {
-            position: relative;
-        }
+    .nav-link {
+      position: relative;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #FF5733;
-            transition: width 0.3s ease;
-        }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #FF5733;
+      transition: width 0.3s ease;
+    }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
-        .fire-text {
-            background: linear-gradient(90deg, #FF5733, #FFC300);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: fire 3s infinite;
-        }
+    .fire-text {
+      background: linear-gradient(90deg, #FF5733, #FFC300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fire 3s infinite;
+    }
 
-        @keyframes fire {
-            0% {
-                background-position: 0% 50%;
-            }
+    @keyframes fire {
+      0% {
+        background-position: 0% 50%;
+      }
 
-            50% {
-                background-position: 100% 50%;
-            }
+      50% {
+        background-position: 100% 50%;
+      }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+    .parallax {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-        @media (max-width: 768px) {
-            .parallax {
-                background-attachment: scroll;
-            }
+    @media (max-width: 768px) {
+      .parallax {
+        background-attachment: scroll;
+      }
 
-            .nav-link,
-            .social-icon,
-            button,
-            a {
-                padding: 8px;
-                display: inline-block;
-            }
+      .nav-link,
+      .social-icon,
+      button,
+      a {
+        padding: 8px;
+        display: inline-block;
+      }
 
-            input,
-            textarea,
-            select {
-                font-size: 16px;
-            }
-        }
+      input,
+      textarea,
+      select {
+        font-size: 16px;
+      }
+    }
 
-        .gallery-img {
-            transition: transform 0.3s ease;
-            height: 200px;
-        }
+    .gallery-img {
+      transition: transform 0.3s ease;
+      height: 200px;
+    }
 
-        .gallery-img:hover {
-            transform: scale(1.05);
-        }
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
 
-        .social-icon {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+    .social-icon {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
-        .social-icon:hover {
-            transform: translateY(-5px);
-            color: #FF5733;
-        }
+    .social-icon:hover {
+      transform: translateY(-5px);
+      color: #FF5733;
+    }
 
-        .instagram-embed {
-            max-width: 100%;
-            margin: 0 auto;
-            overflow: hidden;
-        }
+    .instagram-embed {
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
 
-        #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
 
-        #mobile-menu.active {
-            max-height: 300px;
-        }
-    </style>
+    #mobile-menu.active {
+      max-height: 300px;
+    }
+  </style>
 </head>
 
 <body class="bg-black text-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl sm:text-2xl font-bold fire-text">BLAZIN VIBE</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link">HOME</a>
-                <a href="#about" class="nav-link">ABOUT</a>
-                <a href="#gallery" class="nav-link">GALLERY</a>
-                <a href="#location" class="nav-link">LOCATION</a>
-                <a href="#contact" class="nav-link">CONTACT</a>
-            </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-white p-2" aria-label="Toggle menu">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden w-full bg-black bg-opacity-95">
-            <div class="container mx-auto px-4 py-2 flex flex-col">
-                <a href="#home" class="nav-link py-3">HOME</a>
-                <a href="#about" class="nav-link py-3">ABOUT</a>
-                <a href="#gallery" class="nav-link py-3">GALLERY</a>
-                <a href="#location" class="nav-link py-3">LOCATION</a>
-                <a href="#contact" class="nav-link py-3">CONTACT</a>
-            </div>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-purple-900 bg-opacity-80 backdrop-blur-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="flex items-center">
+        <img src="./assets/logo.png" alt="BLAZIN VIBE" class="h-8 sm:h-10 transition-transform duration-300 hover:scale-105">
+      </a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link">HOME</a>
+        <a href="#about" class="nav-link">WHAT'S BLAZIN VIBE</a>
+        <a href="#gallery" class="nav-link">GALLERY</a>
+        <a href="#location" class="nav-link">LOCATION</a>
+        <a href="spotify" class="nav-link">MUSIC</a>
+        <a href="#contact" class="nav-link">JOIN THE MOVEMENT</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white p-2" aria-label="Toggle menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden w-full bg-purple-900 bg-opacity-95">
+      <div class="container mx-auto px-4 py-2 flex flex-col">
+            <a href="#home" class="nav-link">HOME</a>
+            <a href="#about" class="nav-link">WHAT'S BLAZIN VIBE</a>
+            <a href="#gallery" class="nav-link">GALLERY</a>
+            <a href="#location" class="nav-link">LOCATION</a>
+            <a href="spotify" class="nav-link">MUSIC</a>
+            <a href="#contact" class="nav-link">JOIN THE MOVEMENT</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section flex items-center justify-center">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 fire-text">BLAZIN VIBE</h1>
-            <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10">An Unforgettable Dance Experience in Cyprus</p>
-            <p id="event-status-message" class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold"></p>
-            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-12">
-                <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-                    <span id="days" class="text-xl sm:text-2xl font-bold">00</span>
-                    <span class="text-xs sm:text-sm">Days</span>
-                </div>
-                <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-                    <span id="hours" class="text-xl sm:text-2xl font-bold">00</span>
-                    <span class="text-xs sm:text-sm">Hours</span>
-                </div>
-                <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-                    <span id="minutes" class="text-xl sm:text-2xl font-bold">00</span>
-                    <span class="text-xs sm:text-sm">Mins</span>
-                </div>
-                <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-                    <span id="seconds" class="text-xl sm:text-2xl font-bold">00</span>
-                    <span class="text-xs sm:text-sm">Secs</span>
-                </div>
-            </div>
-            <a href="#about"
-                class="bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
-                LEARN MORE
-            </a>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section flex items-center justify-center">
+    <div class="container mx-auto px-4 text-center">
+      <img src="./assets/logo.png" alt="Blazin Vibe Logo" class="h-40 sm:h-56 md:h-64 lg:h-72 mx-auto mb-4 sm:mb-6">
+      <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10">Feel the Vibe. Shape the Future</p>
+      <p id="event-status-message" class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold"></p>
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-12">
+        <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="days" class="text-xl sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Days</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-12 sm:py-16 md:py-20 bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-10 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">What is Blazin Vibe?</h2>
-                <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                <div>
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 fire-text">FEEL THE BLAZIN VIBE</h3>
-                    <p class="text-gray-300 mb-4 sm:mb-6">
-                        Join us for the hottest dance event in Cyprus! Blazin Vibe brings together incredible DJs,
-                        amazing dancers, and an electric atmosphere at Platia Eleftherias in the heart of Cyprus.
-                    </p>
-                    <p class="text-gray-300 mb-4 sm:mb-6">
-                        Experience a fusion of urban dance culture, music, and community as we transform Platia
-                        Eleftherias into the ultimate dance paradise. Whether you're a professional dancer or just love
-                        to move to the beat, this event is for everyone!
-                    </p>
-                    <ul class="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-fire text-orange-600 mr-3 flex-shrink-0"></i>
-                            <span>World-class DJs and live performances</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-fire text-orange-600 mr-3 flex-shrink-0"></i>
-                            <span>Dance competitions with amazing prizes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-fire text-orange-600 mr-3 flex-shrink-0"></i>
-                            <span>Food and drink vendors</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-fire text-orange-600 mr-3 flex-shrink-0"></i>
-                            <span>A vibrant community atmosphere</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="instagram-embed mx-auto w-full max-w-md">
-                    <blockquote class="instagram-media" data-instgrm
-                        data-instgrm-permalink="https://www.instagram.com/reel/C5AsTBqtBSv/?utm_source=ig_embed&amp;utm_campaign=loading"
-                        data-instgrm-version="14"
-                        style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                        <div style="padding:16px;">
-                            <a href="https://www.instagram.com/reel/C5AsTBqtBSv/?utm_source=ig_embed&amp;utm_campaign=loading"
-                                style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;"
-                                target="_blank">
-                                <div style="display: flex; flex-direction: row; align-items: center;">
-                                    <div
-                                        style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
-                                    </div>
-                                    <div
-                                        style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                        <div
-                                            style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
-                                        </div>
-                                        <div
-                                            style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="padding: 19% 0;"></div>
-                                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                    <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1"
-                                        xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                                <g>
-                                                    <path
-                                                        d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
-                                                    </path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div style="padding-top: 8px;">
-                                    <div
-                                        style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
-                                        View this post on Instagram</div>
-                                </div>
-                                <div style="padding: 12.5% 0;"></div>
-                                <div
-                                    style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
-                                    <div>
-                                        <div
-                                            style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
-                                        </div>
-                                        <div
-                                            style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
-                                        </div>
-                                        <div
-                                            style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left: 8px;">
-                                        <div
-                                            style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
-                                        </div>
-                                        <div
-                                            style="width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left: auto;">
-                                        <div
-                                            style="width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
-                                        </div>
-                                        <div
-                                            style="background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
-                                        </div>
-                                        <div
-                                            style="width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
-                                    <div
-                                        style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
-                                    </div>
-                                    <div
-                                        style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
-                                    </div>
-                                </div>
-                            </a>
-                            <p
-                                style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                                <a href="https://www.instagram.com/reel/C5AsTBqtBSv/?utm_source=ig_embed&amp;utm_campaign=loading"
-                                    style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
-                                    target="_blank">
-                                    A post shared by Urban Vibe CY (@urbanvibecy)
-                                </a>
-                            </p>
-                        </div>
-                    </blockquote>
-                </div>
-            </div>
+        <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="hours" class="text-xl sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Hours</span>
         </div>
-    </section>
+        <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="minutes" class="text-xl sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Mins</span>
+        </div>
+        <div class="countdown-item w-16 h-16 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="seconds" class="text-xl sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Secs</span>
+        </div>
+      </div>
+      <a href="#about"
+        class="bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
+        LEARN MORE
+      </a>
+    </div>
+  </section>
 
-    <!-- Parallax Section -->
-    <section class="parallax py-16 sm:py-24 md:py-32" style="background-image: url('/');">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 fire-text">GET READY TO BLAZE</h2>
-            <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-10 max-w-3xl mx-auto">
-                Join hundreds of dancers and music lovers for an unforgettable experience in the heart of Cyprus.
+  <!-- About Section -->
+  <section id="about" class="py-12 sm:py-16 md:py-20 bg-purple-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">What is Blazin Vibe?</h2>
+        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 fire-text">FEEL THE BLAZIN VIBE</h3>
+          <p class="text-gray-200 mb-4 sm:mb-6">
+            BlazinVibe is more than a brand—it's a movement. It's the fusion of Music, Fashion, Art, and Fine Drinking, brought to life in the most breathtaking locations.
+          </p>
+          <p class="text-gray-200 mb-4 sm:mb-6">
+            Born from small city teams with big city dreams, BlazinVibe was created to give local talent the stage it deserves—something often scarce in Cyprus. Inspired by the energy of global metropolises, we're here to redefine the scene, creating a vibrant hub where passionate creatives from the worlds of music, fashion, art, and dance come together.
+          </p>
+          <p class="text-gray-200 mb-4 sm:mb-6">
+            This isn't just a festival—it's an experience. A celebration of bold ideas, fresh styles, and the unstoppable spirit of a new wave.
+          </p>
+          <p class="text-gray-200 mb-4 sm:mb-6">
+            Welcome to BlazinVibe. Feel the vibe. Shape the future.
+          </p>
+        </div>
+        <div class="instagram-embed mx-auto w-full max-w-md">
+          <!-- New Instagram Embed Code -->
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> 
+              <a href="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> 
+                <div style=" display: flex; flex-direction: row; align-items: center;"> 
+                  <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> 
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> 
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> 
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div> 
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                  <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                        <g>
+                          <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px;"> 
+                  <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                </div>
+                <div style="padding: 12.5% 0;"></div> 
+                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                  <div> 
+                    <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+                    <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+                    <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+                  </div>
+                  <div style="margin-left: 8px;"> 
+                    <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+                    <div style="width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+                  </div>
+                  <div style="margin-left: auto;"> 
+                    <div style="width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+                    <div style="background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+                    <div style="width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                  </div>
+                </div>
+                <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> 
+                  <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+                  <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+                </div>
+              </a>
+              <p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                <a href="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Urban Vibe CY (@urbanvibecy)</a>
+              </p>
+            </div>
+          </blockquote>
+          <script async src="//www.instagram.com/embed.js"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section -->
+  <section class="parallax py-16 sm:py-24 md:py-32" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/image7.jpg');">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 fire-text">Join the movement</h2>
+      <p class="text-lg sm:text-xl md:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto">
+        Musicians, brands, artists, etc. can apply here!
+      </p>
+      <a href="#contact"
+        class="bg-white text-black hover:bg-gray-200 font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
+        Click here to apply
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-12 sm:py-16 md:py-20 bg-purple-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Blazin Vibe - Street Party 06.04.23</h2>
+        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+        <p class="text-gray-300 mt-4 sm:mt-6 max-w-2xl mx-auto">
+          Check out moments from our previous events and get a taste of what's to come!
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image1.png" alt="Event Photo 1" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image2.png" alt="Event Photo 2" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image3.jpg" alt="Event Photo 3" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image4.jpg" alt="Event Photo 4" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image5.jpg" alt="Event Photo 5" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image6.png" alt="Event Photo 6" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image7.jpg" alt="Event Photo 7" class="w-full h-full object-cover" />
+        </div>
+        <div class="gallery-img overflow-hidden rounded-lg">
+          <img src="assets/image8.jpg" alt="Event Photo 8" class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div class="text-center mt-8 sm:mt-12">
+        <a href="https://www.instagram.com/urbanvibecy/" target="_blank"
+          class="text-orange-500 hover:text-orange-400 transition-colors duration-300 inline-flex items-center p-2">
+          <span>View more on Instagram</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="py-20 bg-purple-900">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">LOCATION</h2>
+        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+        <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+          Join us at Platia Eleftherias, one of the most iconic locations in Cyprus!
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="rounded-lg overflow-hidden h-96">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.467677832479!2d33.359831471262865!3d35.16989441481307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1700d6f3e9d5%3A0xdfea1b9984141ac5!2sEleftheria%20Square!5e0!3m2!1sen!2suk!4v1741352254491!5m2!1sen!2suk"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="auto"></iframe>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-6 fire-text">PLATIA ELEFTHERIAS</h3>
+          <p class="text-gray-300 mb-6">
+            Located in the heart of Cyprus, Platia Eleftherias (Freedom Square) is the perfect venue for our
+            Blazin Vibe event. This iconic location offers plenty of space for dancing, performances, and
+            connecting with fellow dance enthusiasts.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-orange-600 mr-3 mt-1"></i>
+              <span>Platia Eleftherias, Cyprus</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-parking text-orange-600 mr-3 mt-1"></i>
+              <span>Public parking available nearby</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-bus text-orange-600 mr-3 mt-1"></i>
+              <span>Accessible by public transport</span>
+            </li>
+          </ul>
+          <a href="https://maps.app.goo.gl/4r5AEXX6yGMQziJp7"
+            target="_blank"
+            class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors duration-300">
+            <span>Get Directions</span>
+            <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Spotify Section -->
+  <section id="spotify" class="py-12 sm:py-16 md:py-20 bg-purple-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">Our Playlists</h2>
+        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+        <div class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 fire-text">BLAZIN VIBE OFFICIAL</h3>
+          <p class="text-gray-200 mb-6">Get in the mood with our official event playlist. Experience the energy and rhythm that defines Blazin Vibe.</p>
+          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX32NsLKyzScr" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="rounded-lg shadow-lg"></iframe>
+        </div>
+        <div class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 fire-text">URBAN DANCE HITS</h3>
+          <p class="text-gray-200 mb-6">Discover the latest and greatest urban dance tracks that will keep you moving all night long.</p>
+          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0HRj9P7NxeE" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Contact Section (Discount Code Request) -->
+  <section id="contact" class="py-20 bg-purple-900">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Join the Movement!</h2>
+        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+        <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+          Fill out the form below to apply.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <form id="discount-form" class="space-y-6" action="https://blazin-vibe-backend-production.up.railway.app/request_code" method="POST">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+              <input type="text" id="name" name="name" required
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+              <input type="email" id="email" name="email" required
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div>
+              <label for="instagram" class="block text-sm font-medium mb-1">Socials</label>
+              <input type="text" id="instagram" name="instagram" placeholder="@yourusername" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div>
+              <label for="about" class="block text-sm font-medium mb-1">Tell Us About Yourself</label>
+              <textarea id="about" name="about" rows="4" placeholder="Share your story, brand/passion" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+            </div>
+            <!-- Discount Code Container (initially hidden) -->
+            <div id="discount-code-container"
+              class="hidden bg-gray-800 border border-orange-500 rounded-lg p-4 text-center">
+              <p class="text-sm text-gray-300 mb-2">Your Discount Code:</p>
+              <p id="discount-code" class="text-2xl font-bold text-orange-500"></p>
+            </div>
+            <!-- Error/Message Container -->
+            <div id="discount-message" class="hidden bg-red-600 text-white p-4 rounded-lg text-center">
+            </div>
+            <button type="submit"
+              class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
+              Submit Application
+            </button>
+          </form>
+        </div>
+        <div>
+          <div class="bg-gray-800 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-6 fire-text">FOLLOW US</h3>
+            <p class="text-gray-300 mb-8">
+              Follow us on social media to stay updated with the latest news, announcements, and
+              behind-the-scenes content for the Blazin Vibe event!
             </p>
-            <a href="#contact"
-                class="bg-white text-black hover:bg-gray-200 font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
-                GET A FREE DISCOUNT CODE
-            </a>
+            <div class="flex space-x-6">
+              <a href="https://www.instagram.com/urbanvibecy/" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.facebook.com/urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.youtube.com/@urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://twitter.com/urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+            </div>
+            <div class="mt-8">
+              <h4 class="text-xl font-bold mb-4">Contact Information</h4>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <i class="fas fa-envelope text-orange-600 mr-3 mt-1"></i>
+                  <span>info@blazinvibe.com</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-phone text-orange-600 mr-3 mt-1"></i>
+                  <span>+357 99 123456</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-12 sm:py-16 md:py-20 bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-10 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Blazin Vibe - Street Party 06.04.23</h2>
-                <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-                <p class="text-gray-300 mt-4 sm:mt-6 max-w-2xl mx-auto">
-                    Check out moments from our previous events and get a taste of what's to come!
-                </p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image1.png" alt="Event Photo 1" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image2.png" alt="Event Photo 2" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image3.jpg" alt="Event Photo 3" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image4.jpg" alt="Event Photo 4" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image5.jpg" alt="Event Photo 5" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image6.png" alt="Event Photo 6" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image7.jpg" alt="Event Photo 7" class="w-full h-full object-cover" />
-                </div>
-                <div class="gallery-img overflow-hidden rounded-lg">
-                    <img src="assets/image8.jpg" alt="Event Photo 8" class="w-full h-full object-cover" />
-                </div>
-            </div>
-            <div class="text-center mt-8 sm:mt-12">
-                <a href="https://www.instagram.com/urbanvibecy/" target="_blank"
-                    class="text-orange-500 hover:text-orange-400 transition-colors duration-300 inline-flex items-center p-2">
-                    <span>View more on Instagram</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
+  <!-- Footer -->
+  <footer class="bg-black py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+          <h4 class="text-xl font-bold mb-6 fire-text">BLAZIN VIBE</h4>
+          <p class="text-gray-400">The hottest dance event in Cyprus, bringing together dancers, music lovers,
+            and urban culture enthusiasts.</p>
         </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="location" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">LOCATION</h2>
-                <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-                <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
-                    Join us at Platia Eleftherias, one of the most iconic locations in Cyprus!
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="rounded-lg overflow-hidden h-96">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.467677832479!2d33.359831471262865!3d35.16989441481307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1700d6f3e9d5%3A0xdfea1b9984141ac5!2sEleftheria%20Square!5e0!3m2!1sen!2suk!4v1741352254491!5m2!1sen!2suk"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="auto"></iframe>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 fire-text">PLATIA ELEFTHERIAS</h3>
-                    <p class="text-gray-300 mb-6">
-                        Located in the heart of Cyprus, Platia Eleftherias (Freedom Square) is the perfect venue for our
-                        Blazin Vibe event. This iconic location offers plenty of space for dancing, performances, and
-                        connecting with fellow dance enthusiasts.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-orange-600 mr-3 mt-1"></i>
-                            <span>Platia Eleftherias, Cyprus</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-parking text-orange-600 mr-3 mt-1"></i>
-                            <span>Public parking available nearby</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-bus text-orange-600 mr-3 mt-1"></i>
-                            <span>Accessible by public transport</span>
-                        </li>
-                    </ul>
-                    <a href="https://maps.app.goo.gl/4r5AEXX6yGMQziJp7"
-                        target="_blank"
-                        class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors duration-300">
-                        <span>Get Directions</span>
-                        <i class="fas fa-external-link-alt ml-2"></i>
-                    </a>
-                </div>
-            </div>
+        <div>
+          <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#home"
+                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Home</a></li>
+            <li><a href="#about"
+                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">About</a></li>
+            <li><a href="#gallery"
+                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Gallery</a></li>
+            <li><a href="#location"
+                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Location</a></li>
+            <li><a href="#contact"
+                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Contact</a></li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Contact Section (Discount Code Request) -->
-    <section id="contact" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">GET YOUR DISCOUNT CODE</h2>
-                <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-                <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
-                    Fill out the form below to receive your exclusive discount code for the event!
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <form id="discount-form" class="space-y-6" action="https://blazin-vibe-backend-production.up.railway.app/request_code"
-                        method="POST">
-                        <div>
-                            <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
-                            <input type="text" id="name" name="name" required
-                                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
-                            <input type="email" id="email" name="email" required
-                                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required
-                                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                        </div>
-                        <!-- Discount Code Container (initially hidden) -->
-                        <div id="discount-code-container"
-                            class="hidden bg-gray-800 border border-orange-500 rounded-lg p-4 text-center">
-                            <p class="text-sm text-gray-300 mb-2">Your Discount Code:</p>
-                            <p id="discount-code" class="text-2xl font-bold text-orange-500"></p>
-                        </div>
-                        <!-- Error/Message Container -->
-                        <div id="discount-message" class="hidden bg-red-600 text-white p-4 rounded-lg text-center">
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
-                            GET DISCOUNT CODE
-                        </button>
-                    </form>
-                </div>
-                <div>
-                    <div class="bg-gray-800 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-6 fire-text">FOLLOW US</h3>
-                        <p class="text-gray-300 mb-8">
-                            Follow us on social media to stay updated with the latest news, announcements, and
-                            behind-the-scenes content for the Blazin Vibe event!
-                        </p>
-                        <div class="flex space-x-6">
-                            <a href="https://www.instagram.com/urbanvibecy/" target="_blank"
-                                class="social-icon text-2xl hover:text-orange-500">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.facebook.com/urbanvibecy" target="_blank"
-                                class="social-icon text-2xl hover:text-orange-500">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                            <a href="https://www.youtube.com/@urbanvibecy" target="_blank"
-                                class="social-icon text-2xl hover:text-orange-500">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="https://twitter.com/urbanvibecy" target="_blank"
-                                class="social-icon text-2xl hover:text-orange-500">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </div>
-                        <div class="mt-8">
-                            <h4 class="text-xl font-bold mb-4">Contact Information</h4>
-                            <ul class="space-y-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-envelope text-orange-600 mr-3 mt-1"></i>
-                                    <span>info@blazinvibe.com</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-phone text-orange-600 mr-3 mt-1"></i>
-                                    <span>+357 99 123456</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <h4 class="text-xl font-bold mb-6">Event Info</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li>Date: Coming Soon</li>
+            <li>Time: TBA</li>
+            <li>Venue: Platia Eleftherias</li>
+            <li>City: Cyprus</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>
-                    <h4 class="text-xl font-bold mb-6 fire-text">BLAZIN VIBE</h4>
-                    <p class="text-gray-400">The hottest dance event in Cyprus, bringing together dancers, music lovers,
-                        and urban culture enthusiasts.</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#home"
-                                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Home</a></li>
-                        <li><a href="#about"
-                                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">About</a>
-                        </li>
-                        <li><a href="#gallery"
-                                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Gallery</a>
-                        </li>
-                        <li><a href="#location"
-                                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Location</a>
-                        </li>
-                        <li><a href="#contact"
-                                class="text-gray-400 hover:text-orange-500 transition-colors duration-300">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-6">Event Info</h4>
-                    <ul class="space-y-3 text-gray-400">
-                        <li>Date: Coming Soon</li>
-                        <li>Time: TBA</li>
-                        <li>Venue: Platia Eleftherias</li>
-                        <li>City: Cyprus</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4 sm:mb-6">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Subscribe to get the latest updates about the event!</p>
-                    <form class="flex flex-col sm:flex-row gap-2 sm:gap-0">
-                        <input type="email" placeholder="Your email"
-                            class="w-full sm:w-auto flex-1 bg-gray-800 border border-gray-700 rounded-lg sm:rounded-l-lg sm:rounded-r-none py-2 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                        <button type="submit"
-                            class="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg transition-colors duration-300">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Blazin Vibe. All rights reserved.</p>
-            </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4 sm:mb-6">Newsletter</h4>
+          <p class="text-gray-400 mb-4">Subscribe to get the latest updates about the event!</p>
+          <form class="flex flex-col sm:flex-row gap-2 sm:gap-0">
+            <input type="email" placeholder="Your email"
+              class="w-full sm:w-auto flex-1 bg-gray-800 border border-gray-700 rounded-lg sm:rounded-l-lg sm:rounded-r-none py-2 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <button type="submit"
+              class="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg transition-colors duration-300">Subscribe</button>
+          </form>
         </div>
-    </footer>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Blazin Vibe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Mobile Menu Toggle & Countdown Script -->
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('active');
-            if (mobileMenu.classList.contains('active')) {
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            } else {
-                mobileMenu.style.maxHeight = '0';
-            }
+  <!-- Mobile Menu Toggle & Countdown Script -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('active');
+      if (mobileMenu.classList.contains('active')) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      } else {
+        mobileMenu.style.maxHeight = '0';
+      }
+    });
+
+    // Function to close mobile menu
+    function closeMobileMenu() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.remove('active');
+      mobileMenu.style.maxHeight = '0';
+    }
+
+    // Add click event listeners to all mobile menu links
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Countdown Timer
+    function updateCountdown() {
+      const eventDate = new Date('2025-04-07T00:00:00').getTime();
+      const now = new Date().getTime();
+
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+
+      let messageElement = document.getElementById('event-status-message');
+      if (!messageElement) {
+        messageElement = document.createElement('p');
+        messageElement.id = 'event-status-message';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold transition-all duration-500 opacity-0';
+        const countdownContainer = document.querySelector('.countdown-container');
+        countdownContainer.insertBefore(messageElement, countdownContainer.firstChild);
+      }
+
+      const currentDate = new Date(now).setHours(0, 0, 0, 0);
+      const eventDay = new Date(eventDate).setHours(0, 0, 0, 0);
+
+      if (currentDate < eventDay) {
+        const distance = eventDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysElement.innerText = String(days).padStart(2, '0');
+        hoursElement.innerText = String(hours).padStart(2, '0');
+        minutesElement.innerText = String(minutes).padStart(2, '0');
+        secondsElement.innerText = String(seconds).padStart(2, '0');
+
+        messageElement.style.opacity = '0';
+      }
+      else if (currentDate === eventDay) {
+        daysElement.innerText = '00';
+        hoursElement.innerText = '00';
+        minutesElement.innerText = '00';
+        secondsElement.innerText = '00';
+
+        const countdownItems = document.querySelectorAll('.countdown-item');
+        countdownItems.forEach(item => {
+          if (!item.classList.contains('animated')) {
+            item.classList.add('animated');
+            item.style.animation = 'pulse 1.5s infinite';
+            item.style.boxShadow = '0 0 20px rgba(255, 87, 51, 0.7)';
+          }
         });
 
-        // Function to close mobile menu
-        function closeMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.remove('active');
-            mobileMenu.style.maxHeight = '0';
-        }
+        messageElement.innerText = '🔥 EVENT STARTED! 🔥';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold fire-text transition-all duration-500';
+        messageElement.style.opacity = '1';
+      }
+      else {
+        daysElement.innerText = '00';
+        hoursElement.innerText = '00';
+        minutesElement.innerText = '00';
+        secondsElement.innerText = '00';
 
-        // Add click event listeners to all mobile menu links
-        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
+        messageElement.innerText = 'EVENT COMPLETED';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
+        messageElement.style.opacity = '1';
+      }
+    }
 
-        // Countdown Timer
-        function updateCountdown() {
-            const eventDate = new Date('2025-04-07T00:00:00').getTime();
-            const now = new Date().getTime();
-
-            const daysElement = document.getElementById('days');
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-
-            let messageElement = document.getElementById('event-status-message');
-            if (!messageElement) {
-                messageElement = document.createElement('p');
-                messageElement.id = 'event-status-message';
-                messageElement.className = 'text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold transition-all duration-500 opacity-0';
-                const countdownContainer = document.querySelector('.countdown-container');
-                countdownContainer.insertBefore(messageElement, countdownContainer.firstChild);
-            }
-
-            const currentDate = new Date(now).setHours(0, 0, 0, 0);
-            const eventDay = new Date(eventDate).setHours(0, 0, 0, 0);
-
-            if (currentDate < eventDay) {
-                const distance = eventDate - now;
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                daysElement.innerText = String(days).padStart(2, '0');
-                hoursElement.innerText = String(hours).padStart(2, '0');
-                minutesElement.innerText = String(minutes).padStart(2, '0');
-                secondsElement.innerText = String(seconds).padStart(2, '0');
-
-                messageElement.style.opacity = '0';
-            }
-            else if (currentDate === eventDay) {
-                daysElement.innerText = '00';
-                hoursElement.innerText = '00';
-                minutesElement.innerText = '00';
-                secondsElement.innerText = '00';
-
-                const countdownItems = document.querySelectorAll('.countdown-item');
-                countdownItems.forEach(item => {
-                    if (!item.classList.contains('animated')) {
-                        item.classList.add('animated');
-                        item.style.animation = 'pulse 1.5s infinite';
-                        item.style.boxShadow = '0 0 20px rgba(255, 87, 51, 0.7)';
-                    }
-                });
-
-                messageElement.innerText = '🔥 EVENT STARTED! 🔥';
-                messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold fire-text transition-all duration-500';
-                messageElement.style.opacity = '1';
-            }
-            else {
-                daysElement.innerText = '00';
-                hoursElement.innerText = '00';
-                minutesElement.innerText = '00';
-                secondsElement.innerText = '00';
-
-                messageElement.innerText = 'EVENT COMPLETED';
-                messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
-                messageElement.style.opacity = '1';
-            }
-        }
-
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = `
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
       @keyframes pulse {
         0% { transform: scale(1); background: rgba(255, 87, 51, 0.9); }
         50% { transform: scale(1.05); background: rgba(255, 120, 51, 0.95); }
@@ -694,57 +667,57 @@
         align-items: center;
       }
     `;
-        document.head.appendChild(styleSheet);
+    document.head.appendChild(styleSheet);
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const countdownContainer = document.createElement('div');
-            countdownContainer.className = 'countdown-container';
-            const countdownItemsContainer = document.querySelector('.flex.flex-wrap.justify-center.gap-3.sm\\:gap-6.mb-8.sm\\:mb-12');
-            if (countdownItemsContainer && countdownItemsContainer.parentNode) {
-                countdownItemsContainer.parentNode.replaceChild(countdownContainer, countdownItemsContainer);
-                countdownContainer.appendChild(countdownItemsContainer);
-            }
+    document.addEventListener('DOMContentLoaded', function () {
+      const countdownContainer = document.createElement('div');
+      countdownContainer.className = 'countdown-container';
+      const countdownItemsContainer = document.querySelector('.flex.flex-wrap.justify-center.gap-3.sm\\:gap-6.mb-8.sm\\:mb-12');
+      if (countdownItemsContainer && countdownItemsContainer.parentNode) {
+        countdownItemsContainer.parentNode.replaceChild(countdownContainer, countdownItemsContainer);
+        countdownContainer.appendChild(countdownItemsContainer);
+      }
+    });
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <!-- Discount Form API Handler -->
+  <script>
+    document.getElementById('discount-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const discountMessage = document.getElementById('discount-message');
+      const discountCodeContainer = document.getElementById('discount-code-container');
+      const submitButton = form.querySelector('button[type="submit"]');
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
         });
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
-
-    <!-- Discount Form API Handler -->
-    <script>
-        document.getElementById('discount-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const discountMessage = document.getElementById('discount-message');
-            const discountCodeContainer = document.getElementById('discount-code-container');
-            const submitButton = form.querySelector('button[type="submit"]');
-            try {
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: formData
-                });
-                const result = await response.json();
-                if (!response.ok) {
-                    discountMessage.innerText = result.error || "An error occurred.";
-                    discountMessage.classList.remove("hidden");
-                    discountCodeContainer.classList.add("hidden");
-                    submitButton.classList.remove("hidden");
-                } else {
-                    document.getElementById('discount-code').innerText = result.message;
-                    discountCodeContainer.classList.remove("hidden");
-                    discountMessage.classList.add("hidden");
-                    submitButton.classList.add("hidden");  // Hide the submit button
-                }
-            } catch (error) {
-                console.error(error);
-                discountMessage.innerText = "An unexpected error occurred.";
-                discountMessage.classList.remove("hidden");
-                discountCodeContainer.classList.add("hidden");
-                submitButton.classList.remove("hidden");
-            }
-        });
-    </script>
+        const result = await response.json();
+        if (!response.ok) {
+          discountMessage.innerText = result.error || "An error occurred.";
+          discountMessage.classList.remove("hidden");
+          discountCodeContainer.classList.add("hidden");
+          submitButton.classList.remove("hidden");
+        } else {
+          document.getElementById('discount-code').innerText = result.message;
+          discountCodeContainer.classList.remove("hidden");
+          discountMessage.classList.add("hidden");
+          submitButton.classList.add("hidden");  // Hide the submit button
+        }
+      } catch (error) {
+        console.error(error);
+        discountMessage.innerText = "An unexpected error occurred.";
+        discountMessage.classList.remove("hidden");
+        discountCodeContainer.classList.add("hidden");
+        submitButton.classList.remove("hidden");
+      }
+    });
+  </script>
 </body>
 
 </html>
