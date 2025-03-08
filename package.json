@@ -1,0 +1,14 @@
+{
+  "name": "blazinvibe",
+  "version": "1.0.0",
+  "description": "Blazin Vibe - Dance Event Website",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.3",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16"
+  }
+}

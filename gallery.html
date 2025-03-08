@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery - Blazin Vibe Cyprus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dist/output.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      overscroll-behavior: none;
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #FF5733;
+      transition: width 0.3s ease;
+    }
+    .gallery-img {
+      transition: transform 0.3s ease;
+      height: 300px;
+    }
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    #mobile-menu.active {
+      max-height: 300px;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-purple-900 bg-opacity-80 backdrop-blur-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="./assets/logo.webp" alt="BLAZIN VIBE" class="h-8 sm:h-10 transition-transform duration-300 hover:scale-105" loading="lazy">
+      </a>
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html#home" class="nav-link">HOME</a>
+        <a href="index.html#about" class="nav-link">WHAT'S BLAZIN VIBE</a>
+        <a href="gallery.html" class="nav-link">GALLERY</a>
+        <a href="index.html#location" class="nav-link">LOCATION</a>
+        <a href="index.html#spotify" class="nav-link">MUSIC</a>
+        <a href="index.html#contact" class="nav-link">JOIN THE MOVEMENT</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white p-2" aria-label="Toggle menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden w-full bg-purple-900 bg-opacity-95">
+      <div class="container mx-auto px-4 py-2 flex flex-col">
+        <a href="index.html#home" class="nav-link">HOME</a>
+        <a href="index.html#about" class="nav-link">WHAT'S BLAZIN VIBE</a>
+        <a href="gallery.html" class="nav-link">GALLERY</a>
+        <a href="index.html#location" class="nav-link">LOCATION</a>
+        <a href="index.html#spotify" class="nav-link">MUSIC</a>
+        <a href="index.html#contact" class="nav-link">JOIN THE MOVEMENT</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Gallery Header -->
+  <section class="pt-32 pb-12 bg-purple-900">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl sm:text-5xl font-bold text-center mb-4">Photo Gallery</h1>
+      <div class="w-24 h-1 bg-orange-600 mx-auto mb-8"></div>
+      <p class="text-gray-300 text-center max-w-2xl mx-auto">
+        Relive the energy and excitement of Blazin Vibe through our collection of event photos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-12 bg-purple-900">
+    <div class="container mx-auto px-4">
+      <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Gallery images will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-950 py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <img src="./assets/logo.webp" alt="BLAZIN VIBE" class="h-8">
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://www.instagram.com/urbanvibecy/" target="_blank" class="text-white hover:text-orange-500 transition-colors">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="https://www.facebook.com/urbanvibecy" target="_blank" class="text-white hover:text-orange-500 transition-colors">
+            <i class="fab fa-facebook text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <p class="text-gray-400">&copy; 2024 Blazin Vibe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('active');
+    });
+
+    // Create an image element with lazy loading and explicit dimensions
+    function createImageElement(filename, galleryPath) {
+      const container = document.createElement('div');
+      container.className = 'gallery-img overflow-hidden rounded-lg opacity-0 transition-opacity duration-500';
+
+      const img = document.createElement('img');
+      img.dataset.src = galleryPath + filename;
+      img.alt = 'Blazin Vibe Event Photo';
+      img.className = 'w-full h-full object-cover';
+      // Set explicit dimensions (adjust as needed)
+      img.width = 450;
+      img.height = 300;
+      
+      container.appendChild(img);
+      return container;
+    }
+
+    // Load gallery images using Intersection Observer
+    function loadGalleryImages() {
+      const galleryGrid = document.getElementById('galleryGrid');
+      const galleryPath = './assets/gallery/';
+      const imageFiles = [
+        '035A5648.webp', '035A5653.webp', '035A5657.webp', '035A5768.webp', '035A5801.webp',
+        '035A5806.webp', '035A5832.webp', '035A5868.webp', '035A5885.webp', '035A5928.webp',
+        '035A5931.webp', '035A5933.webp', '035A5935.webp', '035A5942.webp', '035A5946.webp',
+        '035A5949.webp', '035A5952.webp', '035A5956.webp', '035A5966.webp', '035A5968.webp',
+        '035A5974.webp', '035A5982.webp', '035A5989.webp', '035A6010.webp', '035A6016.webp',
+        '035A6018.webp', '035A6022.webp', '035A6025.webp', '035A6033.webp', '035A6039.webp',
+        '9N0A2338.webp', '9N0A2344.webp', '9N0A2353.webp', '9N0A2370.webp', '9N0A2407.webp',
+        '9N0A2416.webp', '9N0A2418.webp', '9N0A2420.webp', '9N0A2422.webp', '9N0A2424.webp',
+        'PV2A0020.webp', 'PV2A0030.webp', 'PV2A0037.webp', 'PV2A0078.webp', 'PV2A0096.webp',
+        'PV2A0106.webp', 'PV2A0109.webp', 'PV2A0117.webp', 'PV2A0134.webp', 'PV2A0138.webp'
+      ];
+
+      // Create and append all gallery images
+      imageFiles.forEach(filename => {
+        const imageElement = createImageElement(filename, galleryPath);
+        galleryGrid.appendChild(imageElement);
+      });
+
+      // Set up Intersection Observer for lazy loading
+      const observerOptions = {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const container = entry.target;
+            const img = container.querySelector('img');
+            if (img && img.dataset.src && !img.src) {
+              img.src = img.dataset.src;
+              img.onload = () => {
+                container.classList.remove('opacity-0');
+                observer.unobserve(container);
+              };
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe each image container
+      document.querySelectorAll('.gallery-img').forEach(element => observer.observe(element));
+    }
+
+    // Use DOMContentLoaded to start loading images as soon as the DOM is ready
+    document.addEventListener('DOMContentLoaded', loadGalleryImages);
+  </script>
+</body>
+</html>
