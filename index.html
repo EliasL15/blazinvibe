@@ -526,6 +526,8 @@
       try {
         const response = await fetch('https://blazin-vibe-backend-production.up.railway.app/submit_application', {
           method: 'POST',
+          mode: 'cors',
+          credentials: 'same-origin',
           body: formData
         });
         
