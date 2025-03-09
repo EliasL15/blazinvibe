@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './index.html',
     './scan.html',
+    './gallery.html'
   ],
   theme: {
     extend: {
