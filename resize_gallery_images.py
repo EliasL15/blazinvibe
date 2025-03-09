@@ -22,7 +22,7 @@ def process_gallery():
     
     # Process each image in the gallery
     for filename in os.listdir(gallery_path):
-        if filename.lower().startswith('image10.webp'):
+        if filename.lower().startswith('image7.webp'):
             image_path = os.path.join(gallery_path, filename)
             print(f'Processing {filename}...')
             try:
