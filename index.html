@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,33 +10,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- External CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="dist/output.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <!-- Inline CSS -->
   <style>
-    html, body {
+    html {
       scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
     }
+
     body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
       overscroll-behavior: none;
-      background: #000;
-      color: #fff;
     }
+
     .hero-section {
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./assets/image.png') left/cover no-repeat;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/image.png') left/cover no-repeat;
       height: 100vh;
       min-height: 500px;
     }
+
     .countdown-item {
       background: rgba(255, 87, 51, 0.9);
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+
     .nav-link {
       position: relative;
     }
+
     .nav-link::after {
       content: '';
       position: absolute;
@@ -46,9 +50,11 @@
       background-color: #FF5733;
       transition: width 0.3s ease;
     }
+
     .nav-link:hover::after {
       width: 100%;
     }
+
     .fire-text {
       background: linear-gradient(90deg, #FF5733, #FFC300);
       -webkit-background-clip: text;
@@ -56,74 +62,92 @@
       color: transparent;
       animation: fire 3s infinite;
     }
+
     @keyframes fire {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
+
     .parallax {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
     }
+
     @media (max-width: 768px) {
-      .parallax { background-attachment: scroll; }
-      .nav-link, .social-icon, button, a {
+      .parallax {
+        background-attachment: scroll;
+      }
+
+      .nav-link,
+      .social-icon,
+      button,
+      a {
         padding: 8px;
         display: inline-block;
       }
-      input, textarea, select {
+
+      input,
+      textarea,
+      select {
         font-size: 16px;
       }
     }
+
     .gallery-img {
       transition: transform 0.3s ease;
       height: 200px;
       will-change: transform;
       backface-visibility: hidden;
     }
-    .gallery-img:hover { transform: scale(1.05); }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
     .social-icon {
       transition: transform 0.3s ease, color 0.3s ease;
     }
+
     .social-icon:hover {
       transform: translateY(-5px);
       color: #FF5733;
     }
+
     .instagram-embed {
       max-width: 100%;
       margin: 0 auto;
       overflow: hidden;
     }
+
     #mobile-menu {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
     }
+
     #mobile-menu.active {
       max-height: 300px;
     }
-    /* Moved dynamic styles from JavaScript */
-    @keyframes pulse {
-      0% { transform: scale(1); background: rgba(255,87,51,0.9); }
-      50% { transform: scale(1.05); background: rgba(255,120,51,0.95); }
-      100% { transform: scale(1); background: rgba(255,87,51,0.9); }
-    }
-    .countdown-container {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
   </style>
 </head>
-<body>
+
+<body class="bg-black text-white">
   <!-- Navigation -->
   <nav class="fixed w-full z-50 bg-purple-900 bg-opacity-80 backdrop-blur-md">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="#" class="flex items-center">
-        <img src="./assets/logo.png" alt="BLAZIN VIBE" class="h-8 sm:h-10 transition-transform duration-300 hover:scale-105" loading="lazy">
+        <img src="./assets/logo.png" alt="BLAZIN VIBE"
+          class="h-8 sm:h-10 transition-transform duration-300 hover:scale-105" loading="auto">
       </a>
       <div class="hidden md:flex space-x-8">
         <a href="#home" class="nav-link">HOME</a>
@@ -155,30 +179,30 @@
   <!-- Hero Section -->
   <section id="home" class="hero-section flex items-center justify-center">
     <div class="container mx-auto px-4 text-center">
-      <img src="./assets/logo.png" alt="Blazin Vibe Logo" class="h-40 sm:h-56 md:h-64 lg:h-72 mx-auto mb-4 sm:mb-6" loading="lazy">
+      <img src="./assets/logo.png" alt="Blazin Vibe Logo" class="h-40 sm:h-56 md:h-64 lg:h-72 mx-auto mb-4 sm:mb-6"
+        loading="auto">
       <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10">Feel the Vibe. Shape the Future</p>
       <p id="event-status-message" class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold"></p>
-      <div class="countdown-container">
-        <div class="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-12">
-          <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-            <span id="days" class="text-lg sm:text-2xl font-bold">00</span>
-            <span class="text-xs sm:text-sm">Days</span>
-          </div>
-          <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-            <span id="hours" class="text-lg sm:text-2xl font-bold">00</span>
-            <span class="text-xs sm:text-sm">Hours</span>
-          </div>
-          <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-            <span id="minutes" class="text-lg sm:text-2xl font-bold">00</span>
-            <span class="text-xs sm:text-sm">Mins</span>
-          </div>
-          <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
-            <span id="seconds" class="text-lg sm:text-2xl font-bold">00</span>
-            <span class="text-xs sm:text-sm">Secs</span>
-          </div>
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-12">
+        <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="days" class="text-lg sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Days</span>
+        </div>
+        <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="hours" class="text-lg sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Hours</span>
+        </div>
+        <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="minutes" class="text-lg sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Mins</span>
+        </div>
+        <div class="countdown-item w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center">
+          <span id="seconds" class="text-lg sm:text-2xl font-bold">00</span>
+          <span class="text-xs sm:text-sm">Secs</span>
         </div>
       </div>
-      <a href="#about" class="bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
+      <a href="#about"
+        class="bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
         LEARN MORE
       </a>
     </div>
@@ -195,37 +219,131 @@
         <div>
           <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 fire-text">FEEL THE BLAZIN VIBE</h3>
           <p class="text-gray-200 mb-4 sm:mb-6">
-            BlazinVibe is more than a brand—it's a movement. It's the fusion of Music, Fashion, Art, and Fine Drinking, brought to life in the most breathtaking locations.
+            BlazinVibe is more than a brand—it's a movement. It's the fusion of Music, Fashion, Art, and Fine Drinking,
+            brought to life in the most breathtaking locations.
           </p>
           <p class="text-gray-200 mb-4 sm:mb-6">
-            Born from small city teams with big city dreams, BlazinVibe was created to give local talent the stage it deserves—something often scarce in Cyprus. Inspired by the energy of global metropolises, we're here to redefine the scene, creating a vibrant hub where passionate creatives from the worlds of music, fashion, art, and dance come together.
+            Born from small city teams with big city dreams, BlazinVibe was created to give local talent the stage it
+            deserves—something often scarce in Cyprus. Inspired by the energy of global metropolises, we're here to
+            redefine the scene, creating a vibrant hub where passionate creatives from the worlds of music, fashion,
+            art, and dance come together.
           </p>
           <p class="text-gray-200 mb-4 sm:mb-6">
-            This isn't just a festival—it's an experience. A celebration of bold ideas, fresh styles, and the unstoppable spirit of a new wave.
+            This isn't just a festival—it's an experience. A celebration of bold ideas, fresh styles, and the
+            unstoppable spirit of a new wave.
           </p>
           <p class="text-gray-200 mb-4 sm:mb-6">
             Welcome to BlazinVibe. Feel the vibe. Shape the future.
           </p>
         </div>
         <div class="instagram-embed mx-auto w-full max-w-md">
-          <!-- Instagram Embed -->
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"
-            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px rgba(0,0,0,0.5),0 1px 10px rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
-            <!-- Simplified embed content -->
+          <!-- Instagram Embed Code -->
+          <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> <a
+                href="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div
+                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                    </div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px"
+                    viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                          </path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg></div>
+                <div style="padding-top: 8px;">
+                  <div
+                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                    View this post on Instagram</div>
+                </div>
+                <div style="padding: 12.5% 0;"></div>
+                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                  <div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                    </div>
+                  </div>
+                  <div style="margin-left: 8px;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                    </div>
+                  </div>
+                  <div style="margin-left: auto;">
+                    <div
+                      style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                  </div>
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                  </div>
+                </div>
+              </a>
+              <p
+                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                <a href="https://www.instagram.com/reel/C5S0Lh8NRnI/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                  target="_blank">A post shared by Urban Vibe CY (@urbanvibecy)</a></p>
+            </div>
           </blockquote>
+          <script async src="//www.instagram.com/embed.js"></script>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Parallax Section -->
-  <section class="parallax py-16 sm:py-24 md:py-32" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/image7.jpg');">
+  <section class="parallax py-16 sm:py-24 md:py-32"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/image7.jpg');">
     <div class="container mx-auto px-4 sm:px-6 text-center">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 fire-text">Join the movement</h2>
       <p class="text-lg sm:text-xl md:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto">
         Musicians, brands, artists, etc. can apply here!
       </p>
-      <a href="#contact" class="bg-white text-black hover:bg-gray-200 font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
+      <a href="#contact"
+        class="bg-white text-black hover:bg-gray-200 font-bold py-3 px-6 sm:px-8 rounded-full transition-all duration-300 inline-block text-sm sm:text-base">
         Click here to apply
       </a>
     </div>
@@ -242,30 +360,29 @@
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Use data-src for lazy loading -->
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image1.webp" alt="Event Photo 1" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image1.webp" alt="Event Photo 1" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image2.webp" alt="Event Photo 2" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image2.webp" alt="Event Photo 2" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image3.webp" alt="Event Photo 3" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image3.webp" alt="Event Photo 3" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image4.webp" alt="Event Photo 4" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image4.webp" alt="Event Photo 4" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image5.webp" alt="Event Photo 5" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image5.webp" alt="Event Photo 5" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image6.webp" alt="Event Photo 6" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image6.webp" alt="Event Photo 6" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image7.webp" alt="Event Photo 7" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image7.webp" alt="Event Photo 7" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
         <div class="gallery-img overflow-hidden rounded-lg">
-          <img data-src="./assets/image8.webp" alt="Event Photo 8" class="w-full h-full object-cover" width="300" height="200" loading="lazy" />
+          <img src="./assets/image8.webp" alt="Event Photo 8" class="w-full h-full object-cover" width="300" height="200" loading="auto" />
         </div>
       </div>
       <div class="text-center mt-8 sm:mt-12 space-y-4">
@@ -293,12 +410,16 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="rounded-lg overflow-hidden h-96">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.467677832479!2d33.359831471262865!3d35.16989441481307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1700d6f3e9d5%3A0xdfea1b9984141ac5!2sEleftheria%20Square!5e0!3m2!1sen!2suk!4v1741352254491!5m2!1sen!2suk" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.467677832479!2d33.359831471262865!3d35.16989441481307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1700d6f3e9d5%3A0xdfea1b9984141ac5!2sEleftheria%20Square!5e0!3m2!1sen!2suk!4v1741352254491!5m2!1sen!2suk"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="auto"></iframe>
         </div>
         <div>
           <h3 class="text-2xl font-bold mb-6 fire-text">PLATIA ELEFTHERIAS</h3>
           <p class="text-gray-300 mb-6">
-            Located in the heart of Cyprus, Platia Eleftherias (Freedom Square) is the perfect venue for our Blazin Vibe event. This iconic location offers plenty of space for dancing, performances, and connecting with fellow enthusiasts.
+            Located in the heart of Cyprus, Platia Eleftherias (Freedom Square) is the perfect venue for our Blazin Vibe
+            event. This iconic location offers plenty of space for dancing, performances, and connecting with fellow
+            dance enthusiasts.
           </p>
           <ul class="space-y-4 mb-8">
             <li class="flex items-start">
@@ -314,7 +435,8 @@
               <span>Accessible by public transport</span>
             </li>
           </ul>
-          <a href="https://maps.app.goo.gl/4r5AEXX6yGMQziJp7" target="_blank" class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors duration-300">
+          <a href="https://maps.app.goo.gl/4r5AEXX6yGMQziJp7" target="_blank"
+            class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors duration-300">
             <span>Get Directions</span>
             <i class="fas fa-external-link-alt ml-2"></i>
           </a>
@@ -331,19 +453,24 @@
         <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-        <div class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
+        <div
+          class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
           <h3 class="text-xl sm:text-2xl font-bold mb-4 fire-text">BLAZIN VIBE OFFICIAL</h3>
           <p class="text-gray-200 mb-6">
             Get in the mood with our official event playlist. Experience the energy and rhythm that defines Blazin Vibe.
           </p>
-          <iframe src="https://open.spotify.com/embed/playlist/4kw9kdjzx1UmyWvpysl0y2?theme=1" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="rounded-lg shadow-lg" loading="lazy"></iframe>
+          <iframe src="https://open.spotify.com/embed/playlist/4kw9kdjzx1UmyWvpysl0y2?theme=1" width="100%" height="380"
+            frameborder="0" allowtransparency="true" allow="encrypted-media" class="rounded-lg shadow-lg"
+            loading="auto"></iframe>
         </div>
-        <div class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
+        <div
+          class="bg-gradient-to-br from-purple-800 to-purple-950 p-6 rounded-lg shadow-xl border border-orange-500/20">
           <h3 class="text-xl sm:text-2xl font-bold mb-4 fire-text">URBAN DANCE HITS</h3>
           <p class="text-gray-200 mb-6">
             Discover the latest and greatest urban dance tracks that will keep you moving all night long.
           </p>
-          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?theme=1" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" loading="lazy" style="background: transparent;"></iframe>
+          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?theme=1" width="100%" height="380"
+            frameborder="0" allowtransparency="true" allow="encrypted-media" loading="auto" style="background: transparent;"></iframe>
         </div>
       </div>
     </div>
@@ -359,57 +486,72 @@
           Musicians, brands, artists, and creatives—this is your chance to be part of the movement! Apply now by filling out the form below.
         </p>
       </div>
+      <!-- Main Grid: Left column for the form; Right column split into two boxes -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-        <!-- Contact Form -->
+        <!-- Contact Form Box -->
         <div class="bg-purple-800 p-8 rounded-lg h-full">
-          <form id="contact-form" action="https://liassides.me/blazinvibe/submit_application" method="POST" class="space-y-6 h-full flex flex-col">
-            <div>
+          <form id="contact-form" action="https://liassides.me/blazinvibe/submit_application"
+            method="POST" class="space-y-6 h-full flex flex-col">
+            <div class="flex-grow">
               <label for="name" class="block text-sm font-medium mb-1 text-white">Your Name</label>
-              <input type="text" id="name" name="name" required class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <input type="text" id="name" name="name" required
+                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
-            <div>
+            <div class="flex-grow">
               <label for="email" class="block text-sm font-medium mb-1 text-white">Email Address</label>
-              <input type="email" id="email" name="email" required class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <input type="email" id="email" name="email" required
+                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
-            <div>
+            <div class="flex-grow">
               <label for="phone" class="block text-sm font-medium mb-1 text-white">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <input type="tel" id="phone" name="phone" required
+                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
-            <div>
+            <div class="flex-grow">
               <label for="instagram" class="block text-sm font-medium mb-1 text-white">Socials</label>
-              <input type="text" id="instagram" name="socials" placeholder="@yourusername" required class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <input type="text" id="instagram" name="socials" placeholder="@yourusername" required
+                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
-            <div>
+            <div class="flex-grow">
               <label for="about" class="block text-sm font-medium mb-1 text-white">Tell Us About Yourself</label>
-              <textarea id="about" name="about" rows="4" placeholder="Share your story, brand/passion" required class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+              <textarea id="about" name="about" rows="4" placeholder="Share your story, brand/passion" required
+                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
             </div>
-            <button type="submit" class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
+            <button type="submit"
+              class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
               Submit Application
             </button>
           </form>
         </div>
-        <!-- Follow & Contact Info -->
-        <div class="flex flex-col gap-12">
+        <!-- Right Column: Two stacked boxes -->
+        <div class="flex flex-col gap-12 h-full">
+          <!-- Follow Us Box -->
           <div class="bg-purple-800 p-8 rounded-lg flex-grow">
             <h3 class="text-2xl font-bold mb-6 text-white">FOLLOW US</h3>
             <p class="text-gray-300 mb-8">
-              Follow us on social media for the latest news and behind-the-scenes content.
+              Follow us on social media to stay updated with the latest news, announcements, and behind-the-scenes
+              content for the Blazin Vibe event!
             </p>
             <div class="flex space-x-6">
-              <a href="https://www.instagram.com/urbanvibecy/" target="_blank" class="social-icon text-2xl hover:text-orange-500">
+              <a href="https://www.instagram.com/urbanvibecy/" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="https://www.facebook.com/urbanvibecy" target="_blank" class="social-icon text-2xl hover:text-orange-500">
+              <a href="https://www.facebook.com/urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
                 <i class="fab fa-facebook"></i>
               </a>
-              <a href="https://www.youtube.com/@urbanvibecy" target="_blank" class="social-icon text-2xl hover:text-orange-500">
+              <a href="https://www.youtube.com/@urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
                 <i class="fab fa-youtube"></i>
               </a>
-              <a href="https://twitter.com/urbanvibecy" target="_blank" class="social-icon text-2xl hover:text-orange-500">
+              <a href="https://twitter.com/urbanvibecy" target="_blank"
+                class="social-icon text-2xl hover:text-orange-500">
                 <i class="fa-brands fa-x-twitter"></i>
               </a>
             </div>
           </div>
+          <!-- Contact Information Box -->
           <div class="bg-purple-800 p-8 rounded-lg flex-grow">
             <h4 class="text-xl font-bold mb-4 text-white">CONTACT INFORMATION</h4>
             <ul class="space-y-4 text-white">
@@ -436,74 +578,189 @@
   </footer>
 
   <!-- Notification Container -->
-  <div id="notification" class="fixed top-20 right-4 p-4 rounded-lg text-white transform transition-transform duration-300 translate-x-full"></div>
+  <div id="notification"
+    class="fixed top-20 right-4 p-4 rounded-lg text-white transform transition-transform duration-300 translate-x-full">
+  </div>
 
   <!-- Scripts -->
-  <script defer>
-    // Combined DOMContentLoaded for mobile menu, countdown container and gallery lazy loading
-    document.addEventListener('DOMContentLoaded', function () {
-      // Mobile Menu Toggle
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('menu-toggle').addEventListener('click', function () {
       const mobileMenu = document.getElementById('mobile-menu');
-      document.getElementById('menu-toggle').addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        mobileMenu.style.maxHeight = mobileMenu.classList.contains('active') ? mobileMenu.scrollHeight + 'px' : '0';
-      });
+      mobileMenu.classList.toggle('active');
+      if (mobileMenu.classList.contains('active')) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      } else {
+        mobileMenu.style.maxHeight = '0';
+      }
+    });
 
-      // Lazy Loading Gallery Images using Intersection Observer
-      const images = document.querySelectorAll('.gallery-img img');
-      const observer = new IntersectionObserver((entries, obs) => {
+    // Contact Form Submission
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        const data = await response.json();
+        const notification = document.getElementById('notification');
+        if (response.ok) {
+          notification.textContent = data.message;
+          notification.classList.add('bg-green-500');
+          notification.classList.remove('bg-red-500', 'translate-x-full');
+          form.reset();
+        } else {
+          notification.textContent = data.error;
+          notification.classList.add('bg-red-500');
+          notification.classList.remove('bg-green-500', 'translate-x-full');
+        }
+
+        setTimeout(() => {
+          notification.classList.add('translate-x-full');
+        }, 5000);
+
+      } catch (error) {
+        console.error('Error:', error);
+        const notification = document.getElementById('notification');
+        notification.textContent = 'An error occurred. Please try again later.';
+        notification.classList.add('bg-red-500');
+        notification.classList.remove('bg-green-500', 'translate-x-full');
+
+        setTimeout(() => {
+          notification.classList.add('translate-x-full');
+        }, 5000);
+      }
+    });
+
+    // Countdown Timer
+    function updateCountdown() {
+      const eventDate = new Date('2025-04-04T00:00:00').getTime();
+      const now = new Date().getTime();
+
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+
+      let messageElement = document.getElementById('event-status-message');
+      if (!messageElement) {
+        messageElement = document.createElement('p');
+        messageElement.id = 'event-status-message';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 font-bold transition-all duration-500 opacity-0';
+        const countdownContainer = document.querySelector('.countdown-container');
+        if (countdownContainer) {
+          countdownContainer.insertBefore(messageElement, countdownContainer.firstChild);
+        }
+      }
+
+      const currentDate = new Date(now).setHours(0, 0, 0, 0);
+      const eventDay = new Date(eventDate).setHours(0, 0, 0, 0);
+
+      if (currentDate < eventDay) {
+        const distance = eventDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysElement.innerText = String(days).padStart(2, '0');
+        hoursElement.innerText = String(hours).padStart(2, '0');
+        minutesElement.innerText = String(minutes).padStart(2, '0');
+        secondsElement.innerText = String(seconds).padStart(2, '0');
+
+        messageElement.style.opacity = '0';
+      } else if (currentDate === eventDay) {
+        daysElement.innerText = '00';
+        hoursElement.innerText = '00';
+        minutesElement.innerText = '00';
+        secondsElement.innerText = '00';
+
+        const countdownItems = document.querySelectorAll('.countdown-item');
+        countdownItems.forEach(item => {
+          if (!item.classList.contains('animated')) {
+            item.classList.add('animated');
+            item.style.animation = 'pulse 1.5s infinite';
+            item.style.boxShadow = '0 0 20px rgba(255, 87, 51, 0.7)';
+          }
+        });
+
+        messageElement.innerText = '🔥 EVENT STARTED! 🔥';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold fire-text transition-all duration-500';
+        messageElement.style.opacity = '1';
+      } else {
+        daysElement.innerText = '00';
+        hoursElement.innerText = '00';
+        minutesElement.innerText = '00';
+        secondsElement.innerText = '00';
+
+        messageElement.innerText = 'EVENT COMPLETED';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
+        messageElement.style.opacity = '1';
+      }
+    }
+
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes pulse {
+        0% { transform: scale(1); background: rgba(255, 87, 51, 0.9); }
+        50% { transform: scale(1.05); background: rgba(255, 120, 51, 0.95); }
+        100% { transform: scale(1); background: rgba(255, 87, 51, 0.9); }
+      }
+      .countdown-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const countdownContainer = document.createElement('div');
+      countdownContainer.className = 'countdown-container';
+      const countdownItemsContainer = document.querySelector('.flex.flex-wrap.justify-center.gap-3.sm\\:gap-6.mb-8.sm\\:mb-12');
+      if (countdownItemsContainer && countdownItemsContainer.parentNode) {
+        countdownItemsContainer.parentNode.replaceChild(countdownContainer, countdownItemsContainer);
+        countdownContainer.appendChild(countdownItemsContainer);
+      }
+    });
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <!-- Intersection Observer for auto Loading Gallery Images -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll(".gallery-img img");
+
+      const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target;
-            img.src = img.dataset.src;
-            obs.unobserve(img);
+            img.src = img.dataset.src; // Load image when visible
+            observer.unobserve(img);
           }
         });
       }, { threshold: 0.1 });
-      images.forEach(img => observer.observe(img));
 
-      // Countdown Timer
-      function updateCountdown() {
-        const eventDate = new Date('2025-04-04T00:00:00').getTime();
-        const now = Date.now();
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-        const messageEl = document.getElementById('event-status-message');
-        const currentDate = new Date(now).setHours(0, 0, 0, 0);
-        const eventDay = new Date(eventDate).setHours(0, 0, 0, 0);
-
-        if (currentDate < eventDay) {
-          const distance = eventDate - now;
-          daysEl.innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-          hoursEl.innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-          minutesEl.innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-          secondsEl.innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-          messageEl.style.opacity = '0';
-        } else if (currentDate === eventDay) {
-          [daysEl, hoursEl, minutesEl, secondsEl].forEach(el => el.innerText = '00');
-          document.querySelectorAll('.countdown-item').forEach(item => {
-            if (!item.classList.contains('animated')) {
-              item.classList.add('animated');
-              item.style.animation = 'pulse 1.5s infinite';
-              item.style.boxShadow = '0 0 20px rgba(255,87,51,0.7)';
-            }
-          });
-          messageEl.innerText = '🔥 EVENT STARTED! 🔥';
-          messageEl.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold fire-text transition-all duration-500';
-          messageEl.style.opacity = '1';
-        } else {
-          [daysEl, hoursEl, minutesEl, secondsEl].forEach(el => el.innerText = '00');
-          messageEl.innerText = 'EVENT COMPLETED';
-          messageEl.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
-          messageEl.style.opacity = '1';
-        }
-      }
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
+      images.forEach(img => {
+        img.dataset.src = img.src; // Store original src
+        img.src = ""; // Set empty initially
+        observer.observe(img);
+      });
     });
   </script>
-  <script defer src="https://www.instagram.com/embed.js"></script>
+
 </body>
+
 </html>
