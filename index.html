@@ -158,7 +158,7 @@
         <a href="#gallery" class="nav-link">GALLERY</a>
         <a href="#location" class="nav-link">LOCATION</a>
         <!-- <a href="#spotify" class="nav-link">MUSIC</a> -->
-        <a href="#contact" class="nav-link">JOIN THE MOVEMENT</a>
+        <a href="#contact" class="nav-link">CONTACT US</a>
       </div>
       <div class="md:hidden">
         <button id="menu-toggle" class="text-white p-2" aria-label="Toggle menu">
@@ -463,81 +463,77 @@
   </section> -->
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-purple-900">
-    <div class="container mx-auto px-6 max-w-7xl">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-white">Join the Movement!</h2>
-        <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-        <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
-          Musicians, brands, artists, and creatives—this is your chance to be part of something special! Apply now by filling out the form below. (Applicants will be selected based on availability)
-        </p>
+<section id="contact" class="py-20 bg-purple-900">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 text-white">Contact Us</h2>
+      <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
+      <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+        Have questions about the event starting this Saturday? Reach out to us by filling out the form below.
+      </p>
+    </div>
+    <!-- Main Grid: Left column for the form; Right column split into two boxes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+      <!-- Contact Form Box -->
+      <div class="bg-purple-800 p-8 rounded-lg h-full">
+        <form id="contact-form" action="https://liassides.me/blazinvibe/submit_application"
+          method="POST" class="space-y-6 h-full flex flex-col">
+          <div class="flex-grow">
+            <label for="name" class="block text-sm font-medium mb-1 text-white">Your Name</label>
+            <input type="text" id="name" name="name" required
+              class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          </div>
+          <div class="flex-grow">
+            <label for="email" class="block text-sm font-medium mb-1 text-white">Email Address</label>
+            <input type="email" id="email" name="email" required
+              class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          </div>
+          <div class="flex-grow">
+            <label for="phone" class="block text-sm font-medium mb-1 text-white">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required
+              class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          </div>
+          <div class="flex-grow">
+            <label for="about" class="block text-sm font-medium mb-1 text-white">Your Enquiry</label>
+            <textarea id="about" name="about" rows="4" placeholder="Enter your enquiry or question regarding the event" required
+              class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
+            Submit Application
+          </button>
+        </form>
       </div>
-      <!-- Main Grid: Left column for the form; Right column split into two boxes -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-        <!-- Contact Form Box -->
-        <div class="bg-purple-800 p-8 rounded-lg h-full">
-          <form id="contact-form" action="https://liassides.me/blazinvibe/submit_application"
-            method="POST" class="space-y-6 h-full flex flex-col">
-            <div class="flex-grow">
-              <label for="name" class="block text-sm font-medium mb-1 text-white">Your Name</label>
-              <input type="text" id="name" name="name" required
-                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            </div>
-            <div class="flex-grow">
-              <label for="email" class="block text-sm font-medium mb-1 text-white">Email Address</label>
-              <input type="email" id="email" name="email" required
-                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            </div>
-            <div class="flex-grow">
-              <label for="phone" class="block text-sm font-medium mb-1 text-white">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required
-                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            </div>
-            <div class="flex-grow">
-              <label for="instagram" class="block text-sm font-medium mb-1 text-white">Socials</label>
-              <input type="text" id="instagram" name="socials" placeholder="@yourusername" required
-                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            </div>
-            <div class="flex-grow">
-              <label for="about" class="block text-sm font-medium mb-1 text-white">Tell Us About Yourself</label>
-              <textarea id="about" name="about" rows="4" placeholder="Share your story, brand/passion" required
-                class="w-full bg-purple-700 border border-purple-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
-            </div>
-            <button type="submit"
-              class="w-full bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
-              Submit Application
-            </button>
-          </form>
+      <!-- Right Column: Two stacked boxes -->
+      <div class="flex flex-col gap-12 h-full">
+        <!-- Follow Us Box -->
+        <div class="bg-purple-800 p-8 rounded-lg flex-grow">
+          <h3 class="text-2xl font-bold mb-6 text-white">FOLLOW US</h3>
+          <p class="text-gray-300 mb-8">
+            Follow us on social media to stay updated with the latest news and announcements for the event!
+          </p>
+          <div class="flex space-x-6">
+            <a href="https://www.instagram.com/blazinvibecy" target="_blank"
+              class="social-icon text-2xl hover:text-orange-500">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
-        <!-- Right Column: Two stacked boxes -->
-        <div class="flex flex-col gap-12 h-full">
-          <!-- Follow Us Box -->
-          <div class="bg-purple-800 p-8 rounded-lg flex-grow">
-            <h3 class="text-2xl font-bold mb-6 text-white">FOLLOW US</h3>
-            <p class="text-gray-300 mb-8">
-              Follow us on social media to stay updated with the latest news, announcements, and behind-the-scenes of Blazin Vibe!
-            </p>
-            <div class="flex space-x-6">
-              <a href="https://www.instagram.com/blazinvibecy" target="_blank"
-                class="social-icon text-2xl hover:text-orange-500">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-          </div>
-          <!-- Contact Information Box -->
-          <div class="bg-purple-800 p-8 rounded-lg flex-grow">
-            <h4 class="text-xl font-bold mb-4 text-white">CONTACT INFORMATION</h4>
-            <ul class="space-y-4 text-white">
-              <li class="flex items-start">
-                <i class="fas fa-envelope text-orange-600 mr-3 mt-1"></i>
-                <a href="mailto:info@blazinvibe.com" class="hover:text-orange-500 transition-colors duration-300">info@blazinvibe.com</a>
-              </li>
-            </ul>
-          </div>
+        <!-- Contact Information Box -->
+        <div class="bg-purple-800 p-8 rounded-lg flex-grow">
+          <h4 class="text-xl font-bold mb-4 text-white">CONTACT INFORMATION</h4>
+          <ul class="space-y-4 text-white">
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-orange-600 mr-3 mt-1"></i>
+              <a href="mailto:info@blazinvibe.com" class="hover:text-orange-500 transition-colors duration-300">info@blazinvibe.com</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Footer Section -->
   <footer class="bg-purple-950 py-8">
@@ -569,6 +565,8 @@
       e.preventDefault();
       const form = e.target;
       const formData = new FormData(form);
+      // add socials as empty to the form
+      formData.append('socials', ''); 
 
       try {
         const response = await fetch(form.action, {
@@ -729,6 +727,7 @@
       });
     });
   </script>
+  
 
 </body>
 
