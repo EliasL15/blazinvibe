@@ -609,8 +609,11 @@
 
     // Countdown Timer
     function updateCountdown() {
-      const eventDate = new Date('2025-04-05T15:00:00Z').getTime(); // 5:00 PM Cyprus time (UTC+3)
+      const eventDate = new Date('2025-04-05T12:00:00Z').getTime(); // 3:00 PM Cyprus time (UTC+3)
       const now = new Date().getTime();
+      const currentDate = new Date();
+      const eventDay = new Date('2025-04-05');
+      eventDay.setHours(0, 0, 0, 0);
 
       const daysElement = document.getElementById('days');
       const hoursElement = document.getElementById('hours');
@@ -628,23 +631,37 @@
         }
       }
 
-      const currentDate = new Date(now).setHours(0, 0, 0, 0);
-      const eventDay = new Date(eventDate).setHours(0, 0, 0, 0);
+      // If event date is in the past
+      if (currentDate.getTime() > eventDate) {
+        daysElement.innerText = '00';
+        hoursElement.innerText = '00';
+        minutesElement.innerText = '00';
+        secondsElement.innerText = '00';
 
-      if (currentDate < eventDay) {
+        messageElement.innerText = 'EVENT COMPLETED';
+        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
+        messageElement.style.opacity = '1';
+        return;
+      }
+
+      // If it's event day but before 3 PM
+      if (currentDate.toDateString() === eventDay.toDateString() && currentDate.getHours() < 15) {
         const distance = eventDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        daysElement.innerText = String(days).padStart(2, '0');
+        daysElement.innerText = '00';
         hoursElement.innerText = String(hours).padStart(2, '0');
         minutesElement.innerText = String(minutes).padStart(2, '0');
         secondsElement.innerText = String(seconds).padStart(2, '0');
 
         messageElement.style.opacity = '0';
-      } else if (currentDate === eventDay) {
+        return;
+      }
+
+      // If it's event day and after 3 PM
+      if (currentDate.toDateString() === eventDay.toDateString() && currentDate.getHours() >= 15) {
         daysElement.innerText = '00';
         hoursElement.innerText = '00';
         minutesElement.innerText = '00';
@@ -662,16 +679,22 @@
         messageElement.innerText = '🔥 EVENT STARTED! 🔥';
         messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold fire-text transition-all duration-500';
         messageElement.style.opacity = '1';
-      } else {
-        daysElement.innerText = '00';
-        hoursElement.innerText = '00';
-        minutesElement.innerText = '00';
-        secondsElement.innerText = '00';
-
-        messageElement.innerText = 'EVENT COMPLETED';
-        messageElement.className = 'text-lg sm:text-xl md:text-2xl mt-8 sm:mt-10 mb-8 sm:mb-10 font-bold text-gray-300 transition-all duration-500';
-        messageElement.style.opacity = '1';
+        return;
       }
+
+      // If event is in the future
+      const distance = eventDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysElement.innerText = String(days).padStart(2, '0');
+      hoursElement.innerText = String(hours).padStart(2, '0');
+      minutesElement.innerText = String(minutes).padStart(2, '0');
+      secondsElement.innerText = String(seconds).padStart(2, '0');
+
+      messageElement.style.opacity = '0';
     }
 
     const styleSheet = document.createElement('style');
